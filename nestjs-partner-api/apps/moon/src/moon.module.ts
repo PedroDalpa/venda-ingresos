@@ -1,10 +1,18 @@
 import { Module } from '@nestjs/common';
-import { MoonController } from './moon.controller';
-import { MoonService } from './moon.service';
+import { ConfigModule } from '@nestjs/config';
+import { EventosModule } from './eventos/eventos.module';
+import { PrismaModule } from '@app/core/prisma/prisma.module';
+import { LugaresModule } from './lugares/lugares.module';
 
 @Module({
-  imports: [],
-  controllers: [MoonController],
-  providers: [MoonService],
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: '.env.moon',
+      isGlobal: true,
+    }),
+    PrismaModule,
+    EventosModule,
+    LugaresModule,
+  ],
 })
 export class MoonModule {}
