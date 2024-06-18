@@ -1,10 +1,8 @@
 import { Module } from '@nestjs/common';
-import { SumController } from './sum.controller';
-import { SumService } from './sum.service';
+import { EventsModule } from './events/events.module';
+import { SpotsModule } from './spots/spots.module';
 
 @Module({
-  imports: [],
-  controllers: [SumController],
-  providers: [SumService],
+  imports: [EventsModule, SpotsModule],
 })
 export class SumModule {}
